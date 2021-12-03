@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>How to use this script?</h1>
+    <h2>First of all, you need to opoen the code of this document and in order to use this definder, you just need to input your HTML tags in to the strings on the 56th line</h2>
+        <!-- <script src="./script.js"></script> -->
+        <script>
+            const definingTheTags = (word) => {
+                let tag = "",
+                    tags = [],
+                    isTag = false;
+                for (const letter of word) {
+                    if (letter == "<") {
+                        isTag = true;
+                    }
+                    if (isTag) {
+                        tag += letter;
+                    }
+                    if (letter == ">") {
+                        isTag = false;
+                        tags.push(tag);
+                        tag = "";
+                    }
+                }
+                return tags;
+            };
+
+            let usersActivity
+
+            const isTagEqual = (tags) => {
+                const mistakeTags = [];
+                while (tags.length) {
+                    const tag = "<" + tags[0]?.slice(2);
+                    if (tags[0][1] == '/' && mistakeTags.includes(tag)) {
+                        mistakeTags.splice(mistakeTags.indexOf(tag), 1);
+                        tags.shift();
+                    } else mistakeTags.push(tags.shift());
+
+                }
+
+                if (mistakeTags.length !== 0 && mistakeTags.length === 0) return `Correct coding of HTML tags👍`;
+                return `  ⛔ ERROR!!!!!!!\n\nNumber of mistaken tags: ${mistakeTags.length}\nList of mistaken tags: ${mistakeTags}`;
+            };
+
+
+
+            console.log(isTagEqual(definingTheTags("")));
+        </script>
+</body>
+
+</html>

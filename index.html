@@ -47,7 +47,7 @@
 
                 }
 
-                if (mistakeTags.length !== 0 && mistakeTags.length === 0) return `Correct coding of HTML tags👍`;
+                if (tags.length == 0 && mistakeTags.length === 0) return `Correct coding of HTML tags👍`;
                 return `  ⛔ ERROR!!!!!!!\n\nNumber of mistaken tags: ${mistakeTags.length}\nList of mistaken tags: ${mistakeTags}`;
             };
 
